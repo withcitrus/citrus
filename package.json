@@ -101,7 +101,6 @@
     "passport-github2": "^0.1.12",
     "passport-google-oauth2": "^0.2.0",
     "passport-twitter": "^1.0.4",
-    "pre-commit": "^1.2.2",
     "prism-react-renderer": "^1.2.0",
     "prismjs": "^1.23.0",
     "query-string": "^6.14.1",
@@ -165,8 +164,27 @@
     "validator": "^13.5.2",
     "web-push": "^3.4.4"
   },
+  "resolutions": {
+    "immutable": "3.7.4",
+    "draft-js": "npm:draft-js-fork-mxstbr",
+    "jest-environment-node": "22.4.3",
+    "jest": "22.4.3",
+    "fbjs": "0.8.16",
+    "event-stream": "3.3.4"
+  },
   "scripts": {
-    "webpack-defaults": "webpack-defaults"
+    "webpack-defaults": "webpack-defaults",
+    "eject": "react-scripts eject",
+    "lint:staged": "lint-staged",
+    "lint": "eslint .",
+    "flow": "flow",
+    "build:web": "cross-env NODE_PATH=./ react-app-rewired build",
+    "jest": "cross-env NODE_PATH=./ jest",
+    "test": "npm run jest -- --runInBand --watch",
+    "test:ci": "npm run jest -- --forceExit --outputFile test-results.json --json --maxWorkers=2",
+    "test:e2e": "CYPRESS_RETRIES=2 cypress run",
+    "cypress:open": "cypress open",
+    "cypress:install": "cypress install"
   },
   "devDependencies": {
     "@babel/preset-flow": "^7.12.13",
@@ -204,6 +222,7 @@
     "is-html": "^2.0.0",
     "lint-staged": "^10.5.4",
     "micromatch": "^4.0.2",
+    "pre-commit": "^1.2.2",
     "prettier": "^2.2.1",
     "raw-loader": "^4.0.2",
     "react-app-rewire-hot-loader": "^2.0.1",
@@ -215,5 +234,13 @@
     "wait-on": "^5.2.1",
     "webpack-bundle-analyzer": "^4.4.0",
     "write-file-webpack-plugin": "^4.5.1"
-  }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "pre-commit": "lint:staged"
 }
