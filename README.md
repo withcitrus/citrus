@@ -18,5 +18,11 @@ This is the main codebase for the client of Citrus.
 
 Citrus is **not** ready for use.
 
-## License	
+## License
+
 BSD 3-Clause, see the [LICENSE](LICENSE) file.
+
+```
+We hereby grant anyone to use the default assets and branding of "Citrus" for a private instance running on your own hardware.
+If you choose to operate a public instance of Citrus with this software, you may not use any of our branding in the service, excluding copyright attributions.
+```
